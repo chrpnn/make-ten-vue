@@ -85,13 +85,13 @@ watch(selectedSum, (newSum) => {
     if (newSum === 10) {
         // Удаляем выбранные числа из массива cells по их индексам
         selectedCells.value.forEach((cell) => {
-            cells.value[cell.index] = null;
+            cells.value[cell.index] = null; // Или используем какое-то другое значение, например, пустую строку
         });
 
         // Передаем сумму в хранилище
         store.addToCollapsedSum(newSum * selectedCells.value.length);
 
-        // Очищаем массив selectedCells (сбрасываем выделение)
+        // Очищаем массив selectedCells
         selectedCells.value = [];
 
         // Применяем "падение" ячеек

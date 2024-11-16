@@ -14,7 +14,7 @@ function goToGame() {
             @click="goToGame"
             class="bg-blue-300 py-2 px-4 rounded-xl w-60 h-12 text-white text-lg font-bold uppercase shadow-md hover:bg-blue-500 duration-300 ease-in-out"
         >
-            Играть
+            Новая игра
         </button>
     </div>
 </template>
