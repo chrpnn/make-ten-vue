@@ -34,18 +34,24 @@ const selectedSum = computed(() =>
 
 // Обработчик выбора ячейки с сохранением индекса
 function handleSelect({ index, number, isSelected }) {
+    // Проверяем, если ячейка уже выбрана
     if (isSelected) {
-        // Добавляем объект с номером и индексом ячейки
-        selectedCells.value.push({ index, number });
+        // Проверка на соседность: если ячейка находится рядом с уже выбранной
+        const isNeighbor = selectedCells.value.some((cell) => {
+            const diff = Math.abs(cell.index - index);
+            return diff === 1 || diff === 10; // соседи по горизонтали (разница 1) или вертикали (разница 10)
+        });
+
+        if (isNeighbor || selectedCells.value.length === 0) {
+            selectedCells.value.push({ index, number });
+        }
     } else {
-        // Находим объект с нужным индексом и удаляем его из selectedCells
+        // Убираем ячейку из выделенных
         const cellIndex = selectedCells.value.findIndex(
             (cell) => cell.index === index,
         );
         if (cellIndex >= 0) selectedCells.value.splice(cellIndex, 1);
     }
-
-    
 
     console.log("Сумма выбранных чисел:", selectedSum.value);
 }
@@ -79,13 +85,13 @@ watch(selectedSum, (newSum) => {
     if (newSum === 10) {
         // Удаляем выбранные числа из массива cells по их индексам
         selectedCells.value.forEach((cell) => {
-            cells.value[cell.index] = null; // Или используем какое-то другое значение, например, пустую строку
+            cells.value[cell.index] = null;
         });
 
         // Передаем сумму в хранилище
         store.addToCollapsedSum(newSum * selectedCells.value.length);
 
-        // Очищаем массив selectedCells
+        // Очищаем массив selectedCells (сбрасываем выделение)
         selectedCells.value = [];
 
         // Применяем "падение" ячеек

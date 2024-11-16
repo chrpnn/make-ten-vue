@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
     number: {
@@ -10,12 +10,16 @@ const props = defineProps({
         type: Number,
         required: true,
     },
+    isSelected: {
+        type: Boolean,
+        default: false
+    }
 });
 
 // defineEmits(['select']) говорит Vue, что компонент GridItem.vue собирается "излучать" (emit) событие с именем select. Мы объявляем это событие заранее, чтобы использовать его позже в коде.
 // emit — это переменная, которая теперь содержит функцию для отправки событий. Мы можем вызвать её в любом месте компонента, чтобы передать данные в родительский компонент.
 const emit = defineEmits(["select"]);
-const isSelected = ref(false);
+const isSelected = ref(props.isSelected);
 
 function toggleSelect() {
     isSelected.value = !isSelected.value;
@@ -30,6 +34,10 @@ function toggleSelect() {
     // number: props.number — значение текущей ячейки, которое передано через props (в нашем случае это число от 1 до 9).
     // isSelected: isSelected.value — текущее состояние выделения ячейки (выделена или нет).
 }
+
+watch(() => props.isSelected, (newVal) => {
+    isSelected.value = newVal;
+});
 </script>
 
 <template>
@@ -37,7 +45,7 @@ function toggleSelect() {
         :class="[
             'flex justify-center items-center w-8 h-8 font-semibold border rounded-md text-gray-400  cursor-pointer',
             {
-                ' border-yellow-300': isSelected,
+                ' border-gray-400 bg-slate-100': isSelected,
             },
         ]"
         @click="toggleSelect"
