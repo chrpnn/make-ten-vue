@@ -1,17 +1,9 @@
+@supports (-webkit-touch-callout: none) {
+    .h-screen {
+        height: -webkit-fill-available;
+    }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Для Safari */
-@supports (-webkit-touch-callout: none) {
-    .full-screen {
-        height: -webkit-fill-available; /* Использует реальную высоту */
-    }
-}
-
-/* Для Telegram встроенного браузера */
-@media screen and (min-width: 375px) and (max-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
-    .full-screen {
-        height: calc(100% - 44px); /* Учитывает Telegram UI */
-    }
-}

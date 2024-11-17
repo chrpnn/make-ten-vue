@@ -41,7 +41,7 @@ function restartGame() {
 </script>
 
 <template>
-    <div class="flex flex-col h-screen gap-8 px-5">
+    <div class="flex flex-col h-dvh gap-8 px-5 pb-16">
         <button>
             <ArrowUturnLeftIcon
                 @click="openModal('modal-go-to-home')"
