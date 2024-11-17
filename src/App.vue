@@ -6,7 +6,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <main class="flex flex-col h-screen-dynamic justify-between">
+    <main class="flex flex-col h-screen justify-between">
         <TheHeader v-if="!route.meta.hideHeader" />
         <router-view />
     </main>

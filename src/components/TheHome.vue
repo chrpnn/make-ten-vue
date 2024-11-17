@@ -7,7 +7,7 @@ import CardsCollection from "./CardsCollection.vue";
 </script>
 
 <template>
-    <div class="flex flex-col h-screen-dynamic justify-between">
+    <div class="flex flex-col h-screen justify-between">
         <div class="flex flex-col gap-8">
             <CardsCollection />
         </div>

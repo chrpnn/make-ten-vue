@@ -7,8 +7,8 @@ export default {
         sans: ['Nunito', 'sans-serif'],
       },
       height: {
-        'screen-dynamic': 'calc(var(--vh, 1vh) * 100)',
-    },
+        'screen-custom': 'calc(var(--vh) * 100)',
+      },
     },
   },
   plugins: [],
