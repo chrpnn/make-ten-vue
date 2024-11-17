@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
       },
+      height: {
+        'screen-dynamic': 'calc(var(--vh, 1vh) * 100)',
+    },
     },
   },
   plugins: [],

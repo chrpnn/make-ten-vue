@@ -68,7 +68,7 @@ function logIn() {
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div class="flex flex-col items-center justify-center h-screen-dynamic bg-gray-100">
         <div class="p-6 m-6 bg-white shadow-lg rounded-xl">
             <img class="w-24 mx-auto mb-4" src="@/assets/logo.png" alt="Logo" />
             <h1 class="text-2xl font-semibold text-center mb-4">Вход</h1>
